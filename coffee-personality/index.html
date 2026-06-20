@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本命啡常 | 咖啡人格测试</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238d4f29'/%3E%3Cpath d='M18 24h22a8 8 0 0 1 0 16H21a7 7 0 0 1-3-6z' fill='%23fff6ee'/%3E%3Cpath d='M40 27h4a6 6 0 0 1 0 12h-4' fill='none' stroke='%23fff6ee' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M22 47h24' stroke='%23fff6ee' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 18c1-2 1-4 0-6M31 18c1-2 1-4 0-6M38 18c1-2 1-4 0-6' stroke='%23ffd8b6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Bming Coffee Persona Lab</p>
+        <h1>测出你的本命咖啡人格</h1>
+        <p class="hero-text">
+          这不是一份普通问卷，而是一场把偏好、社交能量、决策方式和生活节奏翻译成咖啡人格的测试。
+          我们沿用 16 型逻辑，但把结果变成更适合“本命啡常”项目的咖啡角色画像。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#quiz">开始测试</a>
+          <button class="button ghost" id="view-gallery-btn" type="button">先看 16 型</button>
+        </div>
+        <div class="starter-card">
+          <label for="nickname">输入你的昵称，结果页会自动带入</label>
+          <div class="starter-row">
+            <input id="nickname" type="text" maxlength="16" placeholder="例如：小满 / Aaron / 阿黎">
+            <button class="button secondary" id="jump-quiz-btn" type="button">进入题目</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="stack-card card-a">
+          <img id="hero-image-a" src="" alt="气泡寻味客">
+        </div>
+        <div class="stack-card card-b">
+          <img id="hero-image-b" src="" alt="黑曜策酿家">
+        </div>
+        <div class="stack-card card-c">
+          <img id="hero-image-c" src="" alt="拿铁艺术家">
+        </div>
+        <div class="badge-float">16 型咖啡人格已就位</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="quiz-panel" id="quiz">
+        <div class="section-head">
+          <p class="eyebrow">Coffee Personality Test</p>
+          <h2>从你的选择里，萃取最像你的那一杯</h2>
+          <p class="section-text">
+            全部题目共 20 题，每题提供 4 个选项。它们不是简单的二选一，而是不同强度的人格倾向，用来让你的测试结果更稳定、更像真实的你。
+          </p>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span id="progress-label">第 1 题 / 共 12 题</span>
+            <span id="progress-percent">8%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <article class="question-card" id="question-card">
+          <p class="dimension-pill" id="dimension-pill">能量取向</p>
+          <h3 id="question-title">题目加载中...</h3>
+          <div class="options" id="options"></div>
+          <div class="question-footer">
+            <button class="button tiny ghost" id="prev-btn" type="button">上一题</button>
+            <p id="question-hint">请选择最像你的一项</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="result-panel hidden" id="result-panel">
+        <div class="section-head">
+          <p class="eyebrow">Your Signature Persona</p>
+          <h2>你的咖啡人格结果</h2>
+        </div>
+
+        <div class="result-layout">
+          <div class="result-art-wrap">
+            <img id="result-image" src="" alt="测试结果人格图像">
+          </div>
+          <div class="result-copy">
+            <p class="result-code" id="result-code"></p>
+            <h3 id="result-name"></h3>
+            <p class="result-headline" id="result-headline"></p>
+            <p class="result-description" id="result-description"></p>
+
+            <div class="result-meta">
+              <div class="meta-card">
+                <span class="meta-label">本命咖啡</span>
+                <strong id="result-drink"></strong>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">社交气质</span>
+                <strong id="result-social"></strong>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">风味关键词</span>
+                <strong id="result-flavor"></strong>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">人格符号</span>
+                <strong id="result-symbol"></strong>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="button primary" id="retake-btn" type="button">重新测试</button>
+              <button class="button ghost" id="scroll-gallery-btn" type="button">查看 16 型全貌</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-panel" id="gallery">
+        <div class="section-head">
+          <p class="eyebrow">All 16 Personas</p>
+          <h2>16 种咖啡人格总览</h2>
+          <p class="section-text">
+            结果页会与下列 16 张图像严格一一对应，测试得分落到哪一型，页面就展示哪一张人格图。
+          </p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./profile-assets.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
